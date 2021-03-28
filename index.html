@@ -1,35 +1,40 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>
-        Demo Charts
-    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<style>
+    @font-face {
+  font-family: 'Revolution Gothic';
+  src: url("https://cdn.shopify.com/s/files/1/0072/7298/8783/t/51/assets/RevolutionGothic-Regular.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0072/7298/8783/t/51/assets/RevolutionGothic-Regular.eot?#iefix") format("embedded-opentype"), url("https://cdn.shopify.com/s/files/1/0072/7298/8783/t/51/assets/RevolutionGothic-Regular.woff2") format("woff2"), url("https://cdn.shopify.com/s/files/1/0072/7298/8783/t/51/assets/RevolutionGothic-Regular.woff") format("woff"), url("https://cdn.shopify.com/s/files/1/0072/7298/8783/t/51/assets/RevolutionGothic-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
+</style>
 </head>
 <body>
     <h3 style="text-align: center;">
         Demo Charts
     </h3>
-<div style="max-width:380px;margin: auto;margin-top:35px; width: 100%;">
+<div style="max-width:650px;margin: auto;margin-top:35px; width: 100%;">
     <canvas width="500" id="myChart"></canvas>
 </div>
 
-<div style="max-width:380px;margin: auto;margin-top:35px; width: 100%;">
+<div style="max-width:650px;margin: auto;margin-top:35px; width: 100%;">
     <canvas width="500" id="myChart1"></canvas>
 </div>
 
-<div style="max-width:380px;margin: auto;margin-top:35px; width: 100%;">
+<div style="max-width:650px;margin: auto;margin-top:35px; width: 100%;">
     <canvas width="500" id="myChart2"></canvas>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script>
     window.onload = function () {
     
-        var ctx = document.getElementById("myChart").getContext('2d');
+     var ctx = document.getElementById("myChart").getContext('2d');
 
         var myChart = new Chart(ctx, {
-            type: 'doughnut',
+            type: 'polarArea',
             data: {
                 labels: ["Protein",	"Fat",	"Carbs"],
                 datasets: [{    
@@ -49,11 +54,16 @@
                     label: function (tooltipItem, data) {
                         var amount = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
                         var total = eval(data.datasets[tooltipItem.datasetIndex].data.join("+"));
-                        return amount +'g';
+                        //return amount +'g';
+                        return amount+'g' + ' ( ' + parseFloat(amount * 100 / total).toFixed(2) + '% )';
                     },
                     //footer: function(tooltipItem, data) { return 'Total: 100 planos.'; }
                 }
             },
+            animation: {
+                duration: 2000,
+            },
+            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'"
             }
         });
 
@@ -64,7 +74,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['Ca','Fe', 'K','Vit. A','Vit. C','Vit. E','Vit. K','B1','B2','B3','B6','B9', 'B12','B7','B5', 'P', 'I','Mg','Zn','Se'],
         datasets: [{
-            label: 'Micro Nutrients',
+            label: 'MICRONUTRIENT',
             data: [20, 40,35,80,120,25,240,40,50,50,50,70,4, 4, 40,40,2, 50,35,15],
             backgroundColor: [
                 '#686467', "#686467", "#686467", "#686467", "#686467", "#686467", "#686467", "#fa1c00", "#fa1c00", "#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa"
@@ -94,21 +104,25 @@ var myChart = new Chart(ctx, {
                 //footer: function(tooltipItem, data) { return 'Total: 100 planos.'; }
             }
         },
+        defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'"
+
     }
 });
 
-
 var ctx = document.getElementById('myChart2').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: ['Ala','Arg','Asp','Cys','Gln','Gly','His','Ile','Leu','Lys','Met','Phe','Pro','Ser','Thr','Trp','Tyr','Val'],
         datasets: [{
             label: 'Amino Acids',
             data: [1.27,1.67,2.64,0.27,4.22,0.99,0.61,1.06,1.84,1.30,0.29,1.17,1.20,1.24,0.97,0.26,0.80,1.22],
-            backgroundColor: ["#686467","#686467","#686467","#686467","#686467","#686467","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa"          ],
-            borderColor: ["#686467","#686467","#686467","#686467","#686467","#686467","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa"          ],
-            borderWidth: 1
+            backgroundColor: "#a8aeaa",
+            borderColor: '#686467',
+            borderWidth: 1,
+            pointBorderColor: '#fa1c00',
+            pointBackgroundColor: '#fa1c00',
+            
         }]
     },
     options: {
@@ -130,6 +144,10 @@ var myChart = new Chart(ctx, {
                 //footer: function(tooltipItem, data) { return 'Total: 100 planos.'; }
             }
         },
+        animation: {
+            duration: 2000,
+        },
+        defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'"
     }
 });
 
