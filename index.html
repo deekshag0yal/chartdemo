@@ -10,6 +10,10 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap; }
+
+.color-1{
+    color: #a8aeaa48;
+}
 </style>
 </head>
 <body>
@@ -41,7 +45,7 @@
                     data: [27,	15,	62], // Specify the data values array
                   
                     borderColor: ['#686467', '#a8aeaa', '#fa1c00'], // Add custom color border 
-                    backgroundColor: ['#686467', '#a8aeaa', '#fa1c00'], // Add custom color background (Points and Fill)
+                    backgroundColor: ['rgba(104, 100, 103, 0.5)', 'rgba(168, 174, 170, 0.5)', 'rgba(250, 28, 0, 0.5)'], // Add custom color background (Points and Fill)
                     borderWidth: 1 // Specify bar border width
                 }]},         
             options: {
@@ -63,7 +67,11 @@
             animation: {
                 duration: 2000,
             },
-            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'"
+            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'",
+            legend:
+{
+    display: false
+}
             }
         });
 
@@ -77,7 +85,9 @@ var myChart = new Chart(ctx, {
             label: 'MICRONUTRIENT',
             data: [20, 40,35,80,120,25,240,40,50,50,50,70,4, 4, 40,40,2, 50,35,15],
             backgroundColor: [
-                '#686467', "#686467", "#686467", "#686467", "#686467", "#686467", "#686467", "#fa1c00", "#fa1c00", "#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa"
+                'rgba(104, 100, 103, 0.5)', "rgba(104, 100, 103, 0.5)", "rgba(104, 100, 103, 0.5)", "rgba(104, 100, 103, 0.5)", "rgba(104, 100, 103, 0.5)", "rgba(104, 100, 103, 0.5)", "rgba(104, 100, 103, 0.5)", 
+                "rgba(250, 28, 0, 0.5)", "rgba(250, 28, 0, 0.5)", "rgba(250, 28, 0, 0.5)","rgba(250, 28, 0, 0.5)","rgba(250, 28, 0, 0.5)","rgba(250, 28, 0, 0.5)","rgba(250, 28, 0, 0.5)",
+                "rgba(168, 174, 170, 0.5)","rgba(168, 174, 170, 0.5)","rgba(168, 174, 170, 0.5)","rgba(168, 174, 170, 0.5)","rgba(168, 174, 170, 0.5)","rgba(168, 174, 170, 0.5)"
             ],
             borderColor: [
             '#686467', "#686467", "#686467", "#686467", "#686467", "#686467", "#686467", "#fa1c00", "#fa1c00", "#fa1c00","#fa1c00","#fa1c00","#fa1c00","#fa1c00","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa","#a8aeaa"
@@ -104,7 +114,11 @@ var myChart = new Chart(ctx, {
                 //footer: function(tooltipItem, data) { return 'Total: 100 planos.'; }
             }
         },
-        defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'"
+        defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'",
+        legend:
+{
+    display: false
+}
 
     }
 });
@@ -117,7 +131,7 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: 'Amino Acids',
             data: [1.27,1.67,2.64,0.27,4.22,0.99,0.61,1.06,1.84,1.30,0.29,1.17,1.20,1.24,0.97,0.26,0.80,1.22],
-            backgroundColor: "#a8aeaa",
+            backgroundColor: "rgba(104, 100, 103, 0.5)",
             borderColor: '#686467',
             borderWidth: 1,
             pointBorderColor: '#fa1c00',
@@ -147,7 +161,11 @@ var myChart = new Chart(ctx, {
         animation: {
             duration: 2000,
         },
-        defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'"
+        defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Revolution Gothic'",
+        legend:
+{
+    display: false
+}
     }
 });
 
